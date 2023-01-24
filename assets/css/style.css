@@ -1,0 +1,88 @@
+/* Global styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+body {
+    background-color: #0D1321;
+    color: #F0EBD8;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Header */
+
+header {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Game Area */
+#memory-container {
+    background-color: #F0EBD8;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+    gap: 5px;
+    padding: 10px;
+}
+
+.cards {
+    background-color: #3E5C76;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.red {
+    background-color: red;
+}
+
+.pink {
+    background-color: pink;
+}
+
+.orange {
+    background-color: orange;
+}
+
+/* Timer Area */
+
+#timer-area {
+    background-color: #1D2D44;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Counter Area */
+
+#counter-area {
+    background-color: #1D2D44;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+}
