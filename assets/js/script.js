@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
     resetButton();
     shuffleCards();
     updateCounter();
+    timerCount();
 })
 
 const cards = document.getElementsByClassName('cards');
 let clicks = -1;
+let timer = 0;
 
 /**
  * Allows you to flip the cards you click on
@@ -25,6 +27,7 @@ function flippedCards() {
 function resetButton() {
     let reset = document.getElementById('reset');
     let resetClick = document.getElementById('clicks');
+    let resetTimer = document.getElementById('timer');
     reset.addEventListener('click', function () {
         setTimeout(function () {
             for (let i = 0; i < cards.length; i++) {
@@ -33,6 +36,8 @@ function resetButton() {
             setTimeout(shuffleCards, 200);
             resetClick.textContent = 0;
             clicks = -1;
+            resetTimer.textContent = 0;
+            timer = 0;
         }, 300);
     })
 }
@@ -71,4 +76,18 @@ for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener('click', function () {
         updateCounter();
     });
+}
+
+
+// This code was taken from https://www.youtube.com/watch?v=ubLC1JxMqfY 
+
+/**
+ * Makes the timer increment by 1 each second
+ */
+function timerCount() {
+    const time = document.getElementById('timer');
+    setInterval(function () {
+        timer += 1;
+        time.textContent = timer;
+    }, 1000)
 }
