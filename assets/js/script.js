@@ -12,6 +12,7 @@ let clicks = -1;
 let timer = 0;
 let openCardOne = null;
 let pair = -1;
+let intervalID;
 
 /**
  * Allows you to flip the cards you click on
@@ -41,10 +42,13 @@ function flippedCards() {
  * Allows you to reset the board by clicking the reset button
  */
 function resetButton() {
-    let reset = document.getElementById('reset');
+    let resetButton = document.getElementById('reset-button');
     let resetClick = document.getElementById('clicks');
     let resetTimer = document.getElementById('timer');
-    reset.addEventListener('click', function () {
+    let resetPairCount = document.getElementById('pairs');
+    const visibility = document.getElementById('memory-container');
+
+    resetButton.addEventListener('click', function () {
         setTimeout(function () {
             for (let i = 0; i < cards.length; i++) {
                 cards[i].classList.remove('flipped');
@@ -55,6 +59,10 @@ function resetButton() {
             clicks = -1;
             resetTimer.textContent = 0;
             timer = 0;
+            clearInterval(intervalID);
+            resetPairCount.textContent = 0;
+            pair = -1;
+            visibility.style.visibility = 'hidden';
         }, 300);
     })
 }
@@ -104,19 +112,22 @@ for (let i = 0; i < cards.length; i++) {
 }
 
 
-// This code was taken from https://www.youtube.com/watch?v=ubLC1JxMqfY 
+// The timerCount code was taken from https://www.youtube.com/watch?v=ubLC1JxMqfY 
+// The idea for how to stop the interval was taken from https://www.tutorialrepublic.com/faq/how-to-stop-setinterval-call-in-javascript.php line 14 and 28
 
 /**
  * Makes the timer increment by 1 each second
+ * and shows game cards
  */
 function timerCount() {
     const time = document.getElementById('timer');
     const start = document.getElementById('start-button');
+    const visibleGame = document.getElementById('memory-container');
     start.addEventListener('click', function () {
-        setInterval(function () {
+       intervalID = setInterval(function () {
             timer += 1;
             time.textContent = timer;
         }, 1000)
-
-    })
+        visibleGame.style.visibility = 'visible';
+    });
 }
