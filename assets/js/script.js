@@ -2,10 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
     flippedCards();
     resetButton();
     shuffleCards();
+    updateCounter();
 })
 
 const cards = document.getElementsByClassName('cards');
-
+let clicks = -1;
 
 /**
  * Allows you to flip the cards you click on
@@ -23,12 +24,15 @@ function flippedCards() {
  */
 function resetButton() {
     let reset = document.getElementById('reset');
+    let resetClick = document.getElementById('clicks');
     reset.addEventListener('click', function () {
         setTimeout(function () {
             for (let i = 0; i < cards.length; i++) {
                 cards[i].classList.remove('flipped');
             }
             setTimeout(shuffleCards, 200);
+            resetClick.textContent = 0;
+            clicks = -1;
         }, 300);
     })
 }
@@ -50,4 +54,21 @@ function shuffleCards() {
     for (let i = 0; i < cards.length; i++) {
         parent.appendChild(cards[i]);
     }
+}
+
+/**
+ * Updates the click counter
+ */
+function updateCounter() {
+    clicks++;
+    const clicksSpan = document.getElementById('clicks');
+    if (clicksSpan) {
+        clicksSpan.textContent = clicks;
+    }
+}
+
+for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener('click', function () {
+        updateCounter();
+    });
 }
