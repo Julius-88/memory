@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 document.addEventListener('DOMContentLoaded', function () {
     flippedCards();
     resetButton();
@@ -5,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCounter();
     timerCount();
     pairCounter();
-})
+});
 
 const cards = document.getElementsByClassName('cards');
 const start = document.getElementById('start-button');
@@ -15,6 +17,7 @@ let clicks = -1;
 let timer = 0;
 let openCardOne = null;
 let pair = -1;
+let intervalId;
 
 /**
  * Allows you to flip the cards you click on
@@ -58,12 +61,12 @@ function resetButton() {
             setTimeout(shuffleCards, 200);
             resetClick.textContent = 0;
             resetTimer.textContent = 0;
-            clearInterval(intervalID);
+            clearInterval(intervalId);
             resetPairCount.textContent = 0;
             visibleGame.style.visibility = 'hidden';
             start.style.visibility = 'visible';
         }, 300);
-    })
+    });
 }
 
 // In order to create the shuffleCards I followed this video https://www.youtube.com/watch?v=myL4xmtAVtw
@@ -112,7 +115,6 @@ for (let i = 0; i < cards.length; i++) {
     });
 }
 
-
 // The timerCount code was taken from https://www.youtube.com/watch?v=ubLC1JxMqfY 
 // The idea for how to stop the interval was taken from https://www.tutorialrepublic.com/faq/how-to-stop-setinterval-call-in-javascript.php line 14 and 28
 
@@ -123,10 +125,10 @@ for (let i = 0; i < cards.length; i++) {
 function timerCount() {
     const time = document.getElementById('timer');
     start.addEventListener('click', function () {
-        intervalID = setInterval(function () {
+        intervalId = setInterval(function () {
             timer += 1;
             time.textContent = timer;
-        }, 1000)
+        }, 1000);
         visibleGame.style.visibility = 'visible';
         start.style.visibility = 'hidden';
     });
