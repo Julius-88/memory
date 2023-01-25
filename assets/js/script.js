@@ -9,15 +9,28 @@ document.addEventListener('DOMContentLoaded', function () {
 const cards = document.getElementsByClassName('cards');
 let clicks = -1;
 let timer = 0;
+let openCardOne = null;
 
 /**
  * Allows you to flip the cards you click on
+ * and checks if they match
  */
 function flippedCards() {
     for (let i = 0; i < cards.length; i++) {
         cards[i].addEventListener('click', function () {
-            this.classList.add('flipped');
-        })
+            const color = this.querySelector('.card-back').getAttribute('data-color');
+            if (openCardOne === null) {
+                openCardOne = this;
+                this.classList.add('flipped');
+            } else if (color === openCardOne.querySelector('.card-back').getAttribute('data-color')) {
+                this.classList.add('flipped');
+                openCardOne = null;
+            } else {
+                openCardOne.classList.remove('flipped');
+                openCardOne = this;
+                this.classList.add('flipped');
+            }
+        });
     }
 }
 
@@ -32,6 +45,7 @@ function resetButton() {
         setTimeout(function () {
             for (let i = 0; i < cards.length; i++) {
                 cards[i].classList.remove('flipped');
+                cards[i].classList.remove('match');
             }
             setTimeout(shuffleCards, 200);
             resetClick.textContent = 0;
