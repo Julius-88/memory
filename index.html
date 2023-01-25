@@ -5,24 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A memory game to challenge your mind while having fun">
+    <meta name="keywords" content="game, memory, memory game">
+    <meta name="author" content="Julius Alamarvdashti">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Memory</title>
 </head>
 
-<body>
+<body aria-labelledby="title timer-area memory-container counter-area game-rules">
 
-    <header>
+    <header id="title">
         <h1>Memory</h1>
         <p>Training your mind in a fun way!</p>
     </header>
 
-    <section id="timer-area">
+    <div id="timer-area">
         <p>Timer: <span id="timer">0</span></p>
         <button id="start-button">Start Game</button>
-    </section>
+    </div>
 
     <!--Followed flip card example from following page: https://www.w3schools.com/howto/howto_css_flip_card.asp -->
-    <section id="memory-container">
+    <main id="memory-container">
         <div class="cards">
             <div class="card-back blue" data-color="blue"></div>
         </div>
@@ -59,16 +62,16 @@
         <div class="cards">
             <div class="card-back orange" data-color="orange"></div>
         </div>
-    </section>
+    </main>
 
-    <section id="counter-area">
+    <div id="counter-area">
         <p>Number of clicks: <span id="clicks">0</span></p>
         <button id="reset-button">Reset</button>
         <p>Number of pairs: <span id="pairs">0</span></p>
-    </section>
+    </div>
 
-    <footer>
-        <h3>Game Rules</h3>
+    <footer id="game-rules">
+        <h1>Game Rules</h1>
         <p>Press the start button to start the game. Match all colors to win.</p>
     </footer>
     <script src="./assets/js/script.js"></script>
