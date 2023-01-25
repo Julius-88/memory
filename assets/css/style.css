@@ -93,6 +93,22 @@ header {
     background-color: #1D2D44;
     padding: 10px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#start-button {
+    margin: 5px auto;
+    padding: 5px;
+    width: 15%;
+    background-color: #748CAB;
+}
+
+#start-button:hover {
+    background-color: #F0EBD8;
+    box-shadow: 0px 0px 5px red;
+    border-radius: 5px;
 }
 
 /* Counter Area */

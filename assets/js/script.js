@@ -111,8 +111,12 @@ for (let i = 0; i < cards.length; i++) {
  */
 function timerCount() {
     const time = document.getElementById('timer');
-    setInterval(function () {
-        timer += 1;
-        time.textContent = timer;
-    }, 1000)
+    const start = document.getElementById('start-button');
+    start.addEventListener('click', function () {
+        setInterval(function () {
+            timer += 1;
+            time.textContent = timer;
+        }, 1000)
+
+    })
 }
