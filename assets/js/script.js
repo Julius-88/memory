@@ -8,11 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 const cards = document.getElementsByClassName('cards');
+const start = document.getElementById('start-button');
+const visibleGame = document.getElementById('memory-container');
+
 let clicks = -1;
 let timer = 0;
 let openCardOne = null;
 let pair = -1;
-let intervalID;
 
 /**
  * Allows you to flip the cards you click on
@@ -46,7 +48,6 @@ function resetButton() {
     let resetClick = document.getElementById('clicks');
     let resetTimer = document.getElementById('timer');
     let resetPairCount = document.getElementById('pairs');
-    const visibility = document.getElementById('memory-container');
 
     resetButton.addEventListener('click', function () {
         setTimeout(function () {
@@ -56,17 +57,14 @@ function resetButton() {
             }
             setTimeout(shuffleCards, 200);
             resetClick.textContent = 0;
-            clicks = -1;
             resetTimer.textContent = 0;
-            timer = 0;
             clearInterval(intervalID);
             resetPairCount.textContent = 0;
-            pair = -1;
-            visibility.style.visibility = 'hidden';
+            visibleGame.style.visibility = 'hidden';
+            start.style.visibility = 'visible';
         }, 300);
     })
 }
-
 
 // In order to create the shuffleCards I followed this video https://www.youtube.com/watch?v=myL4xmtAVtw
 // and I looked at examples on W3schools. https://www.w3schools.com/js/js_htmldom_nodelist.asp https://www.w3schools.com/jsref/met_node_appendchild.asp
@@ -86,6 +84,9 @@ function shuffleCards() {
     }
 }
 
+/**
+ * Adds points to the pairs counter
+ */
 function pairCounter() {
     pair++;
     const pairs = document.getElementById('pairs');
@@ -99,9 +100,9 @@ function pairCounter() {
  */
 function updateCounter() {
     clicks++;
-    const clicksSpan = document.getElementById('clicks');
-    if (clicksSpan) {
-        clicksSpan.textContent = clicks;
+    const clickCounter = document.getElementById('clicks');
+    if (clickCounter) {
+        clickCounter.textContent = clicks;
     }
 }
 
@@ -121,13 +122,12 @@ for (let i = 0; i < cards.length; i++) {
  */
 function timerCount() {
     const time = document.getElementById('timer');
-    const start = document.getElementById('start-button');
-    const visibleGame = document.getElementById('memory-container');
     start.addEventListener('click', function () {
-       intervalID = setInterval(function () {
+        intervalID = setInterval(function () {
             timer += 1;
             time.textContent = timer;
         }, 1000)
         visibleGame.style.visibility = 'visible';
+        start.style.visibility = 'hidden';
     });
 }
