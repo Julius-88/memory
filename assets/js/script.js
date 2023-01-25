@@ -4,12 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
     shuffleCards();
     updateCounter();
     timerCount();
+    pairCounter();
 })
 
 const cards = document.getElementsByClassName('cards');
 let clicks = -1;
 let timer = 0;
 let openCardOne = null;
+let pair = -1;
 
 /**
  * Allows you to flip the cards you click on
@@ -24,6 +26,7 @@ function flippedCards() {
                 this.classList.add('flipped');
             } else if (color === openCardOne.querySelector('.card-back').getAttribute('data-color')) {
                 this.classList.add('flipped');
+                pairCounter();
                 openCardOne = null;
             } else {
                 openCardOne.classList.remove('flipped');
@@ -72,6 +75,14 @@ function shuffleCards() {
     let parent = document.getElementById('memory-container');
     for (let i = 0; i < cards.length; i++) {
         parent.appendChild(cards[i]);
+    }
+}
+
+function pairCounter() {
+    pair++;
+    const pairs = document.getElementById('pairs');
+    if (pairs) {
+        pairs.textContent = pair;
     }
 }
 
