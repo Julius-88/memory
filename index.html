@@ -14,16 +14,19 @@
 
 <body aria-labelledby="title timer-area memory-container counter-area game-rules">
 
+    <!-- header -->
     <header id="title">
         <h1>Memory</h1>
         <p>Training your mind in a fun way!</p>
     </header>
 
+    <!-- timer-area -->
     <div id="timer-area">
         <p>Timer: <span id="timer">0</span></p>
         <button id="start-button">Start Game</button>
     </div>
 
+    <!-- game-area -->
     <!--Followed flip card example from following page: https://www.w3schools.com/howto/howto_css_flip_card.asp -->
     <main id="memory-container">
         <div class="cards">
@@ -64,16 +67,19 @@
         </div>
     </main>
 
+    <!-- counter-area -->
     <div id="counter-area">
         <p>Number of clicks: <span id="clicks">0</span></p>
         <button id="reset-button">Reset</button>
         <p>Number of pairs: <span id="pairs">0</span></p>
     </div>
 
+    <!-- footer -->
     <footer id="game-rules">
         <h1>Game Rules</h1>
         <p>Press the start button to start the game. Match all colors to win.</p>
     </footer>
+
     <script src="./assets/js/script.js"></script>
 </body>
 

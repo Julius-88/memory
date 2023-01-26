@@ -70,7 +70,7 @@ function resetButton() {
 }
 
 // In order to create the shuffleCards I followed this video https://www.youtube.com/watch?v=myL4xmtAVtw
-// and I looked at examples on W3schools. https://www.w3schools.com/js/js_htmldom_nodelist.asp https://www.w3schools.com/jsref/met_node_appendchild.asp
+// and I looked at examples on W3schools. https://www.w3schools.com/js/js_htmldom_nodelist.asp , https://www.w3schools.com/jsref/met_node_appendchild.asp
 /**
  * Shuffles the cards so that they are in a random order
  */
